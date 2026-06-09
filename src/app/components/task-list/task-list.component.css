@@ -17,3 +17,66 @@
     padding: 12px 0;
     font-style: italic;
 }
+
+
+
+.goal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    gap: 12px;
+}
+.goal-header:hover { background: var(--hover); }
+
+.goal-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.chevron {
+    font-size: 20px;
+    color: var(--accent);
+    transition: transform 0.25s ease;
+    line-height: 1;
+    display: inline-block;
+}
+.chevron.open { transform: rotate(90deg); }
+
+.goal-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+}
+
+.task-count {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+}
+
+.progress-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: var(--font-body);
+    min-width: 36px;
+    text-align: right;
+}
+
+.progress-track {
+    height: 3px;
+    background: var(--border);
+    width: 100%;
+}
+.progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -12,7 +12,7 @@
         @if (taskService.logged_in()) {
           <p class="subtitle">{{ taskService.currentUser().name }}</p>
           <button class="btn-logout" (click)="taskService.endSession()">Log Out</button>
-        
+
           @if (taskService.currentUser().role === "admin") {
             @if (taskService.page()==="tasks") {
               <button class="btn-new-goal" (click)="taskService.page.set('users')">Manage Users</button>
@@ -35,14 +35,14 @@
     @if (!taskService.logged_in() || taskService.page()==="login") {
       <app-login-page/>
     }
-    
+
     @else if (taskService.page()==="tasks") {
 
 
       <!-- Page title + quick tasks -->
       <div class="page-title">
         <div class="title-row">
-          <h1>My Upcoming Tasks</h1>
+          <h1>Upcoming Tasks</h1>
         </div>
       </div>
 

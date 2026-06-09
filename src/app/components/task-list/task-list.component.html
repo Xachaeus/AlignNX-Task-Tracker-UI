@@ -1,18 +1,35 @@
 
 <div class="task-list-card">
-  <div class="task-list">
-    @for (task of tasks; track task.id) {
-      @if (!task.completed) {
-        <app-task-item [task]="task" (toggle)="toggleTask.emit($event)" />
-      }
-    }
-    @for (task of tasks; track task.id) {
-      @if (task.completed) {
-        <app-task-item [task]="task" (toggle)="toggleTask.emit($event)" />
-      }
-    }
-    @if (tasks.length === 0) {
-      <p class="empty">No tasks yet.</p>
-    }
+
+  <div class="goal-header" (click)="expanded.set(!expanded())">
+    <div class="goal-left">
+      <span class="chevron" [class.open]="expanded()">›</span>
+      <span class="goal-title">My Upcoming Tasks</span>
+      <span class="task-count">{{ tasks.length }} tasks</span>
+    </div>
+    <span class="progress-label">{{ progress() }}%</span>
   </div>
+
+  <div class="progress-track">
+    <div class="progress-fill" [style.width.%]="progress()"></div>
+  </div>
+
+  @if (this.expanded()) {
+    <div class="task-list">
+      @for (task of tasks; track task.id) {
+        @if (!task.completed) {
+          <app-task-item [task]="task" (toggle)="TaskUpdateCallback($event, task.completed)" />
+        }
+      }
+      @for (task of tasks; track task.id) {
+        @if (task.completed) {
+          <app-task-item [task]="task" (toggle)="TaskUpdateCallback($event, task.completed)" />
+        }
+      }
+      @if (tasks.length === 0) {
+        <p class="empty">No tasks yet.</p>
+      }
+    </div>
+  }
+
 </div>
