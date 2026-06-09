@@ -8,7 +8,7 @@ import { Task } from '../../models/task.model';
   imports: [TaskItemComponent],
   templateUrl: './task-list.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
-  styleUrls: ['./task-list.component.css']
+  styleUrls: ['./task-list.component.css'],
 })
 export class TaskListComponent {
   @Input() tasks!: Task[];
