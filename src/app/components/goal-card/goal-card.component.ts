@@ -41,7 +41,7 @@ export class GoalCardComponent {
     if (!title) return;
     if (!mmddyyyy_Regex.test(completeBy) && completeBy !== "") {
       this.invalidDateEntered.set(true);
-      return; 
+      return;
     }
     this.invalidDateEntered.set(false);
 

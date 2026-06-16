@@ -3,8 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Goal, Task, UserAuth, UserMeta } from '../models/task.model';
 
+import { env } from '../environments/environment';
+
 // Change this to match your backend URL
-const API_BASE = '/api';
+const API_BASE = env.apiUrl;
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {

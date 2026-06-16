@@ -26,13 +26,18 @@ export class LoginPageComponent  {
         // Credentials successfully authenticated
         this.message.set(ua.message);
         setTimeout(() => {
-          this.taskService.setCurrentUser(ua.name, ua.role); 
+          this.taskService.setCurrentUser(ua.name, ua.role);
           this.taskService.page.set("tasks")
-          this.taskService.checkStateHash(); 
+          this.taskService.checkStateHash();
         }, 250);
       },
-      error: ua => { 
-        this.message.set("Invalid Username or Password.");
+      error: err => {
+        if (err.status == 401){
+          this.message.set("Invalid Username or Password.");
+        }
+        else {
+          this.message.set("Could not connect to backend, please try again later.")
+        }
       }
     });
   }
