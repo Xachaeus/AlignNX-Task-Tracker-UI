@@ -33,6 +33,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "https://xachaeus.github.io/AlignNX-Task-Tracker-UI/",
               "budgets": [
                 {
                   "type": "initial",
@@ -99,6 +100,9 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
