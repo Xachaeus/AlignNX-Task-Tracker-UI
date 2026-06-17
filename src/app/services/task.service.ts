@@ -127,8 +127,8 @@ export class TaskService {
         // Preserve expanded state across reloads
         const prevExpanded = new Map(this.goals().map(g => [g.id, g.expanded]));
         this.goals.set(
-          goals.map(g => ({ 
-            ...g, 
+          goals.map(g => ({
+            ...g,
             tasks: [...g.tasks].map(t => {return {...t, parent: g};}),
             expanded: prevExpanded.get(g.id) ?? false
           }))
@@ -206,7 +206,13 @@ export class TaskService {
           )
         );
       },
-      error: (err) => {this.error.set(err?.message ?? 'Failed to create task.'); this.logged_in.set(false); this.page.set("login");},
+      error: (err) => {
+        this.error.set(err?.message ?? 'Failed to create task.');
+        if (err.status == 401) {
+          this.logged_in.set(false);
+          this.page.set("login");
+        }
+      },
     });
     this.checkStateHash();
   }
