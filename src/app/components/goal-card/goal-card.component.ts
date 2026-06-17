@@ -43,7 +43,7 @@ export class GoalCardComponent {
       this.invalidDateEntered.set(true);
       return;
     }
-    if (isNaN(new Date(completeBy).getDate())) {
+    if (isNaN(new Date(completeBy).getDate()) && completeBy !== "") {
       this.invalidDateEntered.set(true);
       return;
     }
