@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { env } from '../../environments/environment';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
         <div class="error-hints">
           <p class="hints-heading">Things to check:</p>
           <ul>
-            <li>The API server is running on <code>http://localhost:3000</code></li>
+            <li>The API server is running on <code>{{ apiUrl }}</code></li>
             <li>PostgreSQL is running and accepting connections</li>
             <li>Your <code>proxy.conf.json</code> is pointed at the right port</li>
             <li>No firewall is blocking the connection</li>
@@ -131,4 +132,5 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 export class ErrorDisplayComponent {
   @Input() message: string = 'An unknown error occurred.';
   @Output() retry = new EventEmitter<void>();
+  apiUrl = env.apiUrl;
 }
