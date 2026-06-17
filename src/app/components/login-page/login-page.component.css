@@ -22,7 +22,7 @@
 
 .login-page-container input:focus { border-color: var(--accent); }
 
-.login-page-container button {
+.btn-login{
     padding: 7px 16px;
     margin-top: 5px;
     background: var(--accent);
@@ -33,7 +33,9 @@
     font-weight: 500;
     cursor: pointer;
     font-family: var(--font-body);
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, background 0.1s, color 0.1s;
 }
 
-.login-page-container button:hover { opacity: 0.85; }
+.btn-login:hover { opacity: 0.85; }
+
+.btn-login:disabled { color: #d0d0d0; background: #808080; }

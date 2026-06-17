@@ -19,24 +19,30 @@ export class LoginPageComponent  {
   password = '';
 
   message = signal<string>(this.taskService.prev_logged_in() ? 'Session timed out.\nPlease re-enter your credentials.' : 'Please enter your credentials.');
+  loading = signal<boolean>(false);
 
   check_credentials() {
+    if (this.loading()) {return;}
+    this.loading.set(true);
     this.apiService.checkUsername(this.username, this.password).subscribe({
       next: ua => {
         // Credentials successfully authenticated
         this.message.set(ua.message);
+        this.loading.set(false);
         setTimeout(() => {
           this.taskService.setCurrentUser(ua.name, ua.role);
-          this.taskService.page.set("tasks")
+          this.taskService.page.set("tasks");
           this.taskService.checkStateHash();
         }, 250);
       },
       error: err => {
         if (err.status == 401){
           this.message.set("Invalid Username or Password.");
+          this.loading.set(false);
         }
         else {
-          this.message.set("Could not connect to backend, please try again later.")
+          this.message.set("Could not connect to backend, please try again later.");
+          this.loading.set(false);
         }
       }
     });

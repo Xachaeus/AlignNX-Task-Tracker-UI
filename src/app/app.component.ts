@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskService.checkStateHash();
-    this.intervalSubscription = interval(10000).subscribe(()=>{this.checkSessionStatus();});
+    this.intervalSubscription = interval(60000).subscribe(()=>{this.checkSessionStatus();});
   }
 
   ngOnDestroy(): void {
