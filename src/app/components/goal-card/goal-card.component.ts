@@ -43,6 +43,10 @@ export class GoalCardComponent {
       this.invalidDateEntered.set(true);
       return;
     }
+    if (isNaN(new Date(completeBy).getDate())) {
+      this.invalidDateEntered.set(true);
+      return;
+    }
     this.invalidDateEntered.set(false);
 
     this.addTask.emit({ title, assignedTo, completeBy });

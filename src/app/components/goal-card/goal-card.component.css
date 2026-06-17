@@ -114,7 +114,7 @@
 }
 .add-task-form-input:focus { border-color: var(--accent); }
 
-.date-format-err-input {
+.add-task-form-input.error {
     padding: 8px 12px;
     border: 1px solid #dd0202;
     border-radius: 6px;
@@ -125,7 +125,7 @@
     outline: none;
     transition: border-color 0.2s;
 }
-.date-format-err-input:focus { border-color:#b90707; }
+.add-task-form-input.error:focus { border-color:#b90707; }
 
 .date-format-err-p {
     color: #9c0000;
