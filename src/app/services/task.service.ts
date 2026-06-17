@@ -182,7 +182,7 @@ export class TaskService {
         this.page.set("login");
       },
     });
-    this.checkStateHash();
+    //this.checkStateHash();
   }
 
   toggleGoalExpanded(goalId: string): void {
