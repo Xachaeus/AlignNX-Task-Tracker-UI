@@ -33,11 +33,11 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "https://xachaeus.github.io/AlignNX-Task-Tracker-UI/",
+              "baseHref": "https://tasktracker.alignnx.com",
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
+                  "maximumWarning": "600kB",
                   "maximumError": "1MB"
                 },
                 {
