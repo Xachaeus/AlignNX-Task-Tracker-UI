@@ -107,11 +107,15 @@ export class TaskService {
         if (hash !== this.state_hash()) {
           this.loadGoals();
         }
+        else {
+          this.loading.set(false);
+        }
         this.state_hash.set(hash);
+        this.error.set("");
       },
       error: err => {
         // In this case, error is most likely due to invalid credentials, so treat this as proof of server-initiated logout
-        this.error.set(err?.message ?? 'Failed to load state hash.');
+        this.loading.set(true);
         this.state_hash.set("");
         this.logged_in.set(false);
         this.page.set("login");

@@ -1,0 +1,17 @@
+<div class="error-shell">
+  <div class="error-card">
+    <div class="error-icon">⚠</div>
+    <h2 class="error-title">Could not load data</h2>
+    <p class="error-message">{{ message }}</p>
+    <div class="error-hints">
+      <p class="hints-heading">Things to check:</p>
+      <ul>
+        <li>The API server is running on <code>{{ apiUrl }}</code></li>
+        <li>PostgreSQL is running and accepting connections</li>
+        <li>Your <code>proxy.conf.json</code> is pointed at the right port</li>
+        <li>No firewall is blocking the connection</li>
+      </ul>
+    </div>
+    <button class="retry-btn" (click)="retry.emit()">↺ Retry</button>
+  </div>
+</div>

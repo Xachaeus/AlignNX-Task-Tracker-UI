@@ -95,7 +95,7 @@
       @if (taskService.error()) {
         <app-error-display
           [message]="taskService.error()!"
-          (retry)="taskService.loadGoals()"
+          (retry)="taskService.checkStateHash(); taskService.loadGoals();"
         />
       }
 
