@@ -134,13 +134,14 @@ export class TaskService {
       next: goals => {
         // Preserve expanded state across reloads
         const prevExpanded = new Map(this.goals().map(g => [g.id, g.expanded]));
-        this.goals.set(
+        const temp_goals = (
           goals.map(g => ({
             ...g,
             tasks: [...g.tasks].map(t => {return {...t, parent: g};}),
             expanded: prevExpanded.get(g.id) ?? false
           }))
         );
+        this.goals.set(temp_goals)
         this.loading.set(false);
         this.logged_in.set(true);
         this.prev_logged_in.set(true);
