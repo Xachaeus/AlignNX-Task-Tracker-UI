@@ -24,6 +24,7 @@ export class LoginPageComponent  {
   check_credentials() {
     if (this.loading()) {return;}
     this.loading.set(true);
+    this.message.set("Checking credentials...")
     this.apiService.checkUsername(this.username, this.password).subscribe({
       next: ua => {
         // Credentials successfully authenticated
