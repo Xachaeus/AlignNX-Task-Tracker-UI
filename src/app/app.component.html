@@ -84,9 +84,22 @@
             (keyup.enter)="submitGoal()"
             autofocus
           />
-          <div class="form-actions">
-            <button class="btn-primary" (click)="submitGoal()">Create Goal</button>
-            <button class="btn-ghost" (click)="showNewGoal.set(false)">Cancel</button>
+          <div class="title-row">
+            <div class="form-actions">
+              <button class="btn-primary" (click)="submitGoal()">Create Goal</button>
+              <button class="btn-ghost" (click)="showNewGoal.set(false)">Cancel</button>
+            </div>
+            <label class="filter-toggle">
+              <input
+                type="checkbox"
+                [ngModel]="taskService.makeNewGoalPrivate()"
+                (ngModelChange)="taskService.makeNewGoalPrivate.set($event)"
+              />
+              <span class="toggle-track">
+                <span class="toggle-thumb"></span>
+              </span>
+              <span class="toggle-label">Private</span>
+            </label>
           </div>
         </div>
       }

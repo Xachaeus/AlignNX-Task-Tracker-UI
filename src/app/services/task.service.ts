@@ -25,6 +25,7 @@ export class TaskService {
   loading = signal(false);
   error = signal<string | null>(null);
   filterMyTasks = signal(false);
+  makeNewGoalPrivate = signal(false);
 
   sortedTasks = computed(() => {
     const raw = this.goals();
@@ -197,7 +198,7 @@ export class TaskService {
   }
 
   addGoal(title: string): void {
-    this.api.createGoal(title).subscribe({
+    this.api.createGoal(title, ((this.makeNewGoalPrivate()) ? this.currentUser().name : 'all')).subscribe({
       next: newGoal => {
         this.goals.update(goals => [...goals, { ...newGoal, expanded: true }]);
       },
