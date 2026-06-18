@@ -26,5 +26,5 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist/alignnx-task-tracker/browser  # Double check your exact local output path
+          folder: dist/alignnx-task-manager/browser  # Double check your exact local output path
           branch: gh-pages
