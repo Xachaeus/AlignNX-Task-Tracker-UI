@@ -35,10 +35,14 @@ export class TaskService {
       .flatMap(goal => {
         const tasks = goal.tasks.filter(t => t.assignedTo === me);
         const sortedTasks = [
-          ...tasks.filter(t => !t.completed),
-          ...tasks.filter(t => t.completed)
+          ...tasks.filter(t => !t.completed)
         ];
         return [...sortedTasks]
+      })
+      .sort((task_a, task_b) => {
+        const date_a = (new Date(task_a.completionDate ?? '12/31/9999')).getDate();
+        const date_b = (new Date(task_b.completionDate ?? '12/31/9999')).getDate();
+        return date_a - date_b;
       })
   })
 
