@@ -24,10 +24,12 @@ export class LoginPageComponent  {
   check_credentials() {
     if (this.loading()) {return;}
     this.loading.set(true);
-    this.message.set("Checking credentials...")
+    this.message.set("Checking credentials...");
+    const backend_message = setTimeout(() => {this.message.set("Waiting for backend to wake up...");}, 2000);
     this.apiService.checkUsername(this.username, this.password).subscribe({
       next: ua => {
         // Credentials successfully authenticated
+        clearTimeout(backend_message);
         this.message.set(ua.message);
         this.loading.set(false);
         setTimeout(() => {
@@ -38,10 +40,12 @@ export class LoginPageComponent  {
       },
       error: err => {
         if (err.status == 401){
+          clearTimeout(backend_message);
           this.message.set("Invalid Username or Password.");
           this.loading.set(false);
         }
         else {
+          clearTimeout(backend_message);
           this.message.set("Could not connect to backend, please try again later.");
           this.loading.set(false);
         }
